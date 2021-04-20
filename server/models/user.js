@@ -37,9 +37,9 @@ userSchema.pre('save', async function (next) {
 //match password
 userSchema.methods.comparePassword = async function (attemp, next) {
     try {
-        return await bcrypt.compare(attempt, this.password)
+        return await bcrypt.compare(attemp, this.password)
     } catch (error) {
-        next(error);
+        return next(error);
     }
 }
 module.exports = mongoose.model("User", userSchema)
