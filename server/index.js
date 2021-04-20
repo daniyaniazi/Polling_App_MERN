@@ -1,21 +1,26 @@
+require('dotenv').config()
 const express = require('express')
-const { errorHandler } = require('./handlers/index')
+const handler = require('./handlers/index')
+const cors = require('cors')
+
+
+
 const app = express();
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000;
+
+//Middlewares
+app.use(cors());
+app.use(express.json()); //to recognize the incoming Request Object as a JSON Object.
+app.use(express.urlencoded({ extended: false })); // recognize the incoming Request Object as strings or arrays
 
 app.get('/', (req, res) => {
     res.json({ message: "HELLO WORLD" })
 })
 
 //http://localhost:3000/anything
-app.use((req, res, next) => {
-    const err = new Error("Not Found")
-    err.status = 404;
+app.use(handler.notFound);
 
-    next(err)
-})
-
-app.use(errorHandler)
+app.use(handler.errorHandler);
 
 
-app.listen(port, console.log(`Server Stated on http:\\localhost:${port}`))
+app.listen(port, console.log(`Server Stated on http:\\localhost:${port}`));
