@@ -39,7 +39,7 @@ userSchema.methods.comparePassword = async function (attemp, next) {
     try {
         return await bcrypt.compare(attempt, this.password)
     } catch (error) {
-        return next(error);
+        next(error);
     }
 }
 module.exports = mongoose.model("User", userSchema)
