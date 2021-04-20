@@ -1,0 +1,15 @@
+{
+    "name": "polling_app_mern",
+    "version": "1.0.0",
+    "description": "Polling Application Fullstack Mern",
+    "main": "index.js",
+    "scripts": {},
+    "author": "Daniya",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    }
+}
