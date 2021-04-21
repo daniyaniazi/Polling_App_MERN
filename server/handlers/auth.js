@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 const db = require('../models')
 
 exports.register = async (req, res, next) => {
@@ -6,8 +7,14 @@ exports.register = async (req, res, next) => {
         //create user
         const user = await db.User.create(req.body);
         const { _id, username, createdAt } = user
-        res.json({ _id, username, createdAt })
+
+        const token = jwt.sign({ _id, username }, process.env.SECRET)
+        res.status(201).json({ _id, username, createdAt, token })
     } catch (error) {
+        console.log(error)
+        if (error.code = 11000) {
+            error.message = "Sorry that username is already taken"
+        }
         next(error)
     }
 }
@@ -15,16 +22,18 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     try {
         const user = await db.User.findOne({ username: req.body.username })
-        console.log("USER AGAYA")
+
         if (user) {
-            console.log("IF KY ANDAR")
+
             const { id, username } = user;
 
             const valid = await user.comparePassword(req.body.password)
-            console.log("VALID VALUE AGAYE", valid)
+
+
             if (valid) {
+                const token = jwt.sign({ id, username }, process.env.SECRET)
                 res.json({
-                    id, username
+                    id, username, token
                 })
             } else {
                 throw new Error('Invalid username/password')
@@ -34,6 +43,7 @@ exports.login = async (req, res, next) => {
             throw new Error('No such user exists')
         }
     } catch (error) {
+        error.message = "Invalid username/password";
         return next(error)
     }
 }

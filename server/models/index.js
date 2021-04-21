@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise //async
 
 
 //connect to db
-mongoose.connect('mongodb://localhost/vote', { useUnifiedTopology: true, useNewUrlParser: true }, () => {
+mongoose.connect(process.env.DATABASE, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
     console.log("Database Connected")
 }) //vote is db name
 
