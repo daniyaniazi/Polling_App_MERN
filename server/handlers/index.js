@@ -12,6 +12,7 @@ const notFound = (req, res, next) => {
 
 module.exports = {
     ...require('./auth'),
+    ...require('./poll'),
     errorHandler,
     notFound
 

@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const handler = require('./handlers/index')
 const cors = require('cors')
-const routes = require('./routes/auth')
+const routes = require('./routes')
 //db
 const db = require('./models/index')
 const app = express();
@@ -23,7 +23,9 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use('/api/auth', routes);
+app.use('/api/auth', routes.auth);
+
+app.use('/api/polls', routes.poll);
 
 //http://localhost:3000/anything
 app.use(handler.notFound);

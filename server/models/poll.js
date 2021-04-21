@@ -2,9 +2,8 @@ const mongoose = require('mongoose')
 
 
 const optionSchema = new mongoose.Schema({
-    options: {
+    option: {
         type: String,
-        required: true,
     },
     votes: {
         type: Number,
