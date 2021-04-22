@@ -1,24 +1,31 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Provider } from "react-redux";
-import api from '../services/api'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { store } from "../store";
 import { setCurrentUser, addError, setToken } from "../store/actions";
 import decode from "jwt-decode";
-import Auth from "../components/auth";
-import ErrorMessage from "../components/errorMessage";
+import RouteViews from "./RouteViews";
+import NavBar from "./NavBar";
 
-if (localStorage.jwttoken) {
-    setToken(localStorage.jwttoken);
+if (localStorage.jwtToken) {
+    setToken(localStorage.jwtToken);
     try {
-        store.dispatch(setCurrentUser(decode(localStorage.jwttoken)))
+        store.dispatch(setCurrentUser(decode(localStorage.jwtToken)))
     } catch (error) {
         store.dispatch(setCurrentUser({}))
         store.dispatch(addError(error))
     }
 }
-const App = () => <Provider store={store}>
-    <Auth authType={'login'} />
-    <ErrorMessage />
-</Provider>
+const App = () => (<Provider store={store}>
+    {
+        console.log(store)
+    }
+    <Router>
+        <Fragment>
+            <NavBar />
+            <RouteViews />
+        </Fragment>
+    </Router>
+</Provider>)
 
 export default App;

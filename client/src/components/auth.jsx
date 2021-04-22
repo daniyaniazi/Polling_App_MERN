@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { authUser, logout } from '../store/actions'
 
+
 class Auth extends React.Component {
     constructor(props) {
         super(props)
@@ -27,9 +28,9 @@ class Auth extends React.Component {
         return <div>
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor="username">Username</label>
-                <input type="text" value={username} name="username" onChange={this.handleChange} />
+                <input type="text" autoComplete="off" value={username} name="username" onChange={this.handleChange} />
                 <label htmlFor="password">Password</label>
-                <input type="password" value={password} name="password" onChange={this.handleChange} />
+                <input type="password" autoComplete="off" value={password} name="password" onChange={this.handleChange} />
 
                 <button type='submit'>Submit</button>
             </form>

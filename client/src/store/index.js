@@ -4,13 +4,16 @@ import rootReducer from "./reducer";
 
 const middleware = [thunk];
 
-const DEFAULT_STATUS = {
-    error: { message: null }
-}
+
+const DEFAULT_STATE = {
+    auth: { isAuthenticated: false },
+    error: { message: null },
+};
+
 
 export const store = createStore(
     rootReducer,
-    DEFAULT_STATUS,
+    DEFAULT_STATE,
     //middleare
     compose(
         //all middleware in one object
