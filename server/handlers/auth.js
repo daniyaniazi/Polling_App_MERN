@@ -44,6 +44,7 @@ exports.login = async (req, res, next) => {
         }
     } catch (error) {
         error.message = "Invalid username/password";
+        console.log("error msg", error.message)
         return next(error)
     }
 }

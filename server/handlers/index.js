@@ -1,6 +1,7 @@
-const errorHandler = (req, res, next,) => {
+const errorHandler = (err, req, res, next,) => {
+    console.log("Here in error handler", err)
     res.status(err.status || 400).json({
-        err: err.message || 'Something went wrong'
+        message: err.message || 'Something went wrong'
     })
 };
 const notFound = (req, res, next) => {

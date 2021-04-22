@@ -12,6 +12,7 @@ export const setToken = token => {
 export const call = async (method, path, data) => {
     //axios.post/get
     const response = await axios[method](`/${path}`, data);
+    console.log("Server Response", response.data)
     return response.data;
 }
 

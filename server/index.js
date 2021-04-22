@@ -27,10 +27,12 @@ app.use('/api/auth', routes.auth);
 
 app.use('/api/polls', routes.poll);
 
+app.use(handler.errorHandler)
+
 //http://localhost:3000/anything
 app.use(handler.notFound);
 
-app.use(handler.errorHandler)
+
 
 
 app.listen(port, console.log(`Server Stated on http:\\localhost:${port}`));

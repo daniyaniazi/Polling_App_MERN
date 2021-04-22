@@ -28,8 +28,9 @@ export const authUser = (path, data) => {
             dispatch(setCurrentUser(user))
             dispatch(removeError())
         } catch (error) {
-            const { err } = error.response.data
-            dispatch(addError(err))
+            console.log(error.response.data)
+            const err = error.response.data
+            dispatch(addError(err.message))
         }
     }
 }
