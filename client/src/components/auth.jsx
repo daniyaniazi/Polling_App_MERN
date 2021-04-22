@@ -5,6 +5,7 @@ import { authUser, logout } from '../store/actions'
 class Auth extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
             username: '',
             password: ''
         }
