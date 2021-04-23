@@ -2,4 +2,4 @@
  A fullstack voting application using Mern stack with authentication and chartsjs
  
  
-![alt text](https://drive.google.com/drive/u/0/folders/1WmcDCzh_GxtX_XpW41ndpseNAM6QX0lM)
+![alt text](https://drive.google.com/file/d/1CKuEeoDAj7DaISXYn9s0j6S8faQqpWIq/view?usp=sharing)
