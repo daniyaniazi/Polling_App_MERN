@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-mongoose.set("debug", true) //log transaction
+//mongoose.set("debug", true) //log transaction
 mongoose.Promise = global.Promise //async
 
 

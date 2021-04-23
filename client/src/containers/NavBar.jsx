@@ -9,10 +9,12 @@ const NavBar = ({ auth, logout }) => {
         return (
             <div>
                 <ul>
+                    <li><Link to='/' >Home</Link></li>
                     <li>
                         <Link to='/register' >Register</Link></li>
                     <li><Link to='/login' >Login</Link></li>
                     <li><Link to='/polls' >Polls</Link></li>
+
                 </ul>
 
             </div>
@@ -21,6 +23,8 @@ const NavBar = ({ auth, logout }) => {
     else {
         return (<div>
             <ul>
+                <li><Link to='/' >Home</Link></li>
+                <li><Link to='/polls' >Polls</Link></li>
                 <li>
                     <p>Logged in as {auth.user.username}</p>
                 </li>

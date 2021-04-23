@@ -1,14 +1,14 @@
 import React from 'react'
 import ErrorMessage from '../components/errorMessage'
-import Poll from '../components/Poll'
+import Polls from '../components/Polls'
 
-const PollPage = () => {
+const HomePage = (props) => {
     return (
         <div>
             <ErrorMessage />
-            <Poll />
+            <Polls {...props} />
         </div>
     )
 }
 
-export default PollPage
+export default HomePage

@@ -4,36 +4,49 @@ import AuthPage from '../pages/AuthPage';
 import { connect } from "react-redux";
 import store from "../store";
 import PollPage from '../pages/PollPage';
+import HomePage from '../pages/HomePage';
+import { getCurrentPoll } from '../store/actions';
+import PollDisplayPage from '../pages/PollDisplayPage';
 
-const RouteViews = ({ auth }) => {
-    console.log(auth)
-    return (
+const RouteViews = ({ getCurrentPoll, auth }) => (
+    <main className="container">
         <Switch>
-            <Route exact path='/login' render={
-                () => <AuthPage authType={'login'} isAuthenticated={auth.isAuthenticated} />
-            } />
+            <Route exact path="/" render={props => <HomePage {...props} />} />
+            <Route
+                exact
+                path="/login"
+                render={() => (
+                    <AuthPage authType="login" isAuthenticated={auth.isAuthenticated} />
+                )}
+            />
+            <Route
+                exact
+                path="/register"
+                render={() => (
+                    <AuthPage
+                        authType="register"
+                        isAuthenticated={auth.isAuthenticated}
+                    />
+                )}
+            />
 
-            <Route exact path='/register' render={
-                () => <AuthPage authType={'register'} isAuthenticated={auth.isAuthenticated} />
-            } />
-
-            <Route exact path='/polls' render={
-                () => <PollPage />
-            } />
-
+            <Route
+                exact
+                path="/poll/:id"
+                render={props => (
+                    <PollDisplayPage getPoll={id => getCurrentPoll(id)} {...props} />
+                )}
+            />
 
         </Switch>
-    )
-}
+    </main>
+);
 
-export default withRouter(connect((store) =>
-    ({ auth: store.auth })
-)(RouteViews));
-
-
-// <Auth authType={'login'} />
-{/* <ErrorMessage /> */ }
-
-
-//
-// import ErrorMessage from "../components/errorMessage";
+export default withRouter(
+    connect(
+        store => ({
+            auth: store.auth,
+        }),
+        { getCurrentPoll },
+    )(RouteViews),
+);

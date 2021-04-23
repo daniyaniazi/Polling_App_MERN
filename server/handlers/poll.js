@@ -93,6 +93,7 @@ exports.vote = async (req, res, next) => {
         const { id: userId } = req.decoded
 
         const { answer } = req.body;
+        console.log("ANSWER RECEVED", answer)
         if (answer) {
 
             const poll = await db.Poll.findById(pollId)
@@ -111,6 +112,7 @@ exports.vote = async (req, res, next) => {
 
                 }
                 else {
+                    console.log("In else")
                     return option
                 }
             })
