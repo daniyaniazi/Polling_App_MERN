@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import AuthPage from '../pages/AuthPage';
 import { connect } from "react-redux";
 import store from "../store";
+import PollPage from '../pages/PollPage';
 
 const RouteViews = ({ auth }) => {
     console.log(auth)
@@ -15,6 +16,11 @@ const RouteViews = ({ auth }) => {
             <Route exact path='/register' render={
                 () => <AuthPage authType={'register'} isAuthenticated={auth.isAuthenticated} />
             } />
+
+            <Route exact path='/polls' render={
+                () => <PollPage />
+            } />
+
 
         </Switch>
     )

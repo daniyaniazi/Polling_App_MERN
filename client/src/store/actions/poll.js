@@ -19,12 +19,13 @@ export const getPolls = () => {
     return async dispatch => {
         try {
             const polls = await api.call('get', `polls`)
+            console.log("polls getpolls : ", polls)
             dispatch(setPolls(polls))
             dispatch(removeError())
         } catch (error) {
-            console.log("Poll Error", error.response.data)
-            const err = error.response.data
-            dispatch(addError(err.message))
+            console.log("Poll Error", error)
+            const err = error
+            dispatch(addError(err))
         }
     }
 }
@@ -36,9 +37,9 @@ export const getUserPolls = () => {
             dispatch(setPolls(polls))
             dispatch(removeError())
         } catch (error) {
-            console.log("user Poll Error", error.response.data)
-            const err = error.response.data
-            dispatch(addError(err.message))
+            console.log("user Poll Error", error)
+            const err = error
+            dispatch(addError(err))
         }
     }
 }
