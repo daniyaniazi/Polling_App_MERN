@@ -5,7 +5,7 @@ import store from "../store";
 
 const ErrorMessage = ({ error }) => (<Fragment>
     {
-        error && <div>{error.message}</div>
+        error && <div className="ErrorMessage">{error.message}</div>
     }
 </Fragment>);
 

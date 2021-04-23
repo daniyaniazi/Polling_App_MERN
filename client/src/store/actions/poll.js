@@ -45,7 +45,7 @@ export const getUserPolls = () => {
 }
 
 
-export const craetePolls = (data) => {
+export const createPoll = (data) => {
     return async dispatch => {
         try {
             const poll = await api.call('post', `polls`, data)
@@ -67,9 +67,9 @@ export const getCurrentPoll = (path) => {
             dispatch(setCurrentPoll(poll))
             dispatch(removeError())
         } catch (error) {
-            console.log("getCurrentPoll", error.response.data)
-            const err = error.response.data
-            dispatch(addError(err.message))
+            console.log("getCurrentPoll", error)
+            const err = error
+            dispatch(addError(err))
         }
     }
 }
@@ -83,6 +83,24 @@ export const vote = (path, data) => {
                 "VOTE RESPONSE : ", poll
             )
             dispatch(setCurrentPoll(poll))
+            dispatch(removeError())
+        } catch (error) {
+            console.log("vote", error.response.data)
+            const err = error.response.data
+            dispatch(addError(err.message))
+        }
+    }
+}
+
+export const deletePoll = (path) => {
+    return async dispatch => {
+        try {
+            console.log(path)
+            const poll = await api.call('delete', `polls/${path}`)
+            console.log(
+                "DELETE RESPONSE : ", poll
+            )
+            dispatch(setCurrentPoll({}))
             dispatch(removeError())
         } catch (error) {
             console.log("vote", error.response.data)

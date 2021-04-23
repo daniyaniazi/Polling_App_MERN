@@ -8,7 +8,8 @@ class Auth extends React.Component {
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
+
         }
 
     }
@@ -20,20 +21,30 @@ class Auth extends React.Component {
         e.preventDefault();
         console.log(username, password)
         const { authType } = this.props
+
         this.props.authUser(authType || 'login', { username, password })
     }
     render() {
 
-        const { username, password } = this.state;
-        return <div>
-            <form onSubmit={this.handleSubmit}>
-                <label htmlFor="username">Username</label>
-                <input type="text" autoComplete="off" value={username} name="username" onChange={this.handleChange} />
-                <label htmlFor="password">Password</label>
-                <input type="password" autoComplete="off" value={password} name="password" onChange={this.handleChange} />
+        const { username, password, } = this.state;
+        return <div className="Auth">
 
-                <button type='submit'>Submit</button>
-            </form>
+            <div className="Form">
+
+                <h2>Login / SignUp</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="option">
+                        <label htmlFor="username">Username</label>
+                        <input type="text" autoComplete="off" value={username} name="username" onChange={this.handleChange} />
+
+                    </div>
+                    <div className="option">
+                        <label htmlFor="password">Password</label>
+                        <input type="password" autoComplete="off" value={password} name="password" onChange={this.handleChange} />
+                    </div>
+                    <button className="button" type='submit'>Submit</button>
+                </form>
+            </div>
         </div>
     }
 }

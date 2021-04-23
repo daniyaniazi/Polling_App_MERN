@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    list-style: none;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.NavBar {
+    background-color: #034f84;
+    color: whitesmoke;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: bolder;
+    color: #c94c4c;
+    font-size: 25px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu li {
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.menu li a {
+    color: whitesmoke;
+    text-decoration: none;
+    list-style: none;
+}
+
+button {
+    padding: 10px;
+}
+
+input {
+    padding: 10px;
+}
+
+label {
+    text-transform: capitalize;
+    padding-right: 20px;
+}
+
+.HomePage {
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.ErrorMessage {
+    font-weight: bold;
+    font-size: 20px;
+    color: #c94c4c;
+    padding: 10px;
+    text-align: center;
+}
+
+.success {
+    font-weight: bold;
+    font-size: 20px;
+    color: #418f20;
+    text-align: center;
+}
+
+.buttons_center {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 40px;
+}
+
+.button {
+    background-color: #80ced6;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #b7d7e8;
+    border: 1px solid #383838;
+}
+
+.Delbutton {
+    background-color: #c94c4c;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.Delbutton:hover {
+    background-color: #e8b7b7;
+    border: 1px solid #383838;
+}
+
+.polls {
+    background-color: #b7d7e8;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.poll {
+    border-bottom: 1px solid #292929;
+    padding: 20px;
+}
+
+.poll:hover {
+    box-shadow: 1px 1px 3px #3b3a30;
+}
+
+.votePoll {
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.Vote {
+    margin-bottom: 60px;
+    background-color: #b7d7e8;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.Chart {
+    margin: auto;
+    width: 70%;
+}
+
+.Form {
+    width: 50%;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
+    background-color: #b7d7e8;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.option {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.Auth {
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 10px;
+}

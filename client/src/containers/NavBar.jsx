@@ -7,8 +7,9 @@ const NavBar = ({ auth, logout }) => {
 
     if (!auth.isAuthenticated) {
         return (
-            <div>
-                <ul>
+            <div className="NavBar">
+                <div className='logo'> Polling Application</div>
+                <ul className='menu' >
                     <li><Link to='/' >Home</Link></li>
                     <li>
                         <Link to='/register' >Register</Link></li>
@@ -21,10 +22,13 @@ const NavBar = ({ auth, logout }) => {
         )
     }
     else {
-        return (<div>
-            <ul>
+        return (<div className="NavBar">
+            <div className='logo'> Polling Application</div>
+            <ul className='menu' >
+
                 <li><Link to='/' >Home</Link></li>
-                <li><Link to='/polls' >Polls</Link></li>
+
+                <li><Link to='/poll/new' >Create Poll</Link></li>
                 <li>
                     <p>Logged in as {auth.user.username}</p>
                 </li>

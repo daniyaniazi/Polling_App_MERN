@@ -7,6 +7,7 @@ import PollPage from '../pages/PollPage';
 import HomePage from '../pages/HomePage';
 import { getCurrentPoll } from '../store/actions';
 import PollDisplayPage from '../pages/PollDisplayPage';
+import CreatePollPgae from '../pages/CreatePoll';
 
 const RouteViews = ({ getCurrentPoll, auth }) => (
     <main className="container">
@@ -29,7 +30,15 @@ const RouteViews = ({ getCurrentPoll, auth }) => (
                     />
                 )}
             />
-
+            <Route
+                exact
+                path="/poll/new"
+                render={() => (
+                    <CreatePollPgae
+                        isAuthenticated={auth.isAuthenticated}
+                    />
+                )}
+            />
             <Route
                 exact
                 path="/poll/:id"

@@ -22,7 +22,7 @@ class Polls extends Component {
         const { getPolls, getUserPolls, auth } = this.props;
 
         const polls = this.props.polls.map(poll => (
-            <li onClick={() => this.handleSelect(poll._id)} key={poll._id}>
+            <li className="poll" onClick={() => this.handleSelect(poll._id)} key={poll._id}>
                 {poll.question}
             </li>
         ));
@@ -39,6 +39,7 @@ class Polls extends Component {
             </button>
                     </div>
                 )}
+                <h2>Polls</h2>
                 <ul className="polls">{polls}</ul>
             </Fragment>
         );

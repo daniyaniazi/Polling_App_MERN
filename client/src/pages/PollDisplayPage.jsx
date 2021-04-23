@@ -15,7 +15,6 @@ class PollPage extends Component {
     render() {
         return (
             <div>
-
                 <ErrorMessage />
                 <Poll />
             </div>

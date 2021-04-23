@@ -4,7 +4,7 @@ import Polls from '../components/Polls'
 
 const HomePage = (props) => {
     return (
-        <div>
+        <div className="HomePage">
             <ErrorMessage />
             <Polls {...props} />
         </div>

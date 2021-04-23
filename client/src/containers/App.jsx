@@ -6,6 +6,7 @@ import { setCurrentUser, addError, setToken } from "../store/actions";
 import decode from "jwt-decode";
 import RouteViews from "./RouteViews";
 import NavBar from "./NavBar";
+import '../styles/style.css'
 
 if (localStorage.jwtToken) {
     setToken(localStorage.jwtToken);
