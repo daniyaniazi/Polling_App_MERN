@@ -12,10 +12,11 @@ body {
 .NavBar {
     background-color: #034f84;
     color: whitesmoke;
-    padding: 15px;
+    padding: 10px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -27,6 +28,7 @@ body {
 .menu {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .menu li {
@@ -97,6 +99,13 @@ label {
     border: 1px solid #383838;
 }
 
+.logout {
+    background-color: #c94c4c;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
 .Delbutton {
     background-color: #c94c4c;
     padding: 10px 20px;
@@ -108,7 +117,8 @@ label {
     margin-bottom: 20px;
 }
 
-.Delbutton:hover {
+.Delbutton:hover,
+.logout:hover {
     background-color: #e8b7b7;
     border: 1px solid #383838;
 }
@@ -132,7 +142,7 @@ label {
 .votePoll {
     width: 50%;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: center;
 }
 
@@ -146,7 +156,8 @@ label {
 
 .Chart {
     margin: auto;
-    width: 70%;
+    width: 60%;
+    margin-bottom: 10px;
 }
 
 .Form {

@@ -33,7 +33,7 @@ const NavBar = ({ auth, logout }) => {
                     <p>Logged in as {auth.user.username}</p>
                 </li>
                 <li>
-                    <button onClick={logout}>Logout</button>
+                    <button className="logout" onClick={logout}>Logout</button>
                 </li>
             </ul>
 
