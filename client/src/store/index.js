@@ -8,8 +8,11 @@ const middleware = [thunk];
 const DEFAULT_STATE = {
     auth: { isAuthenticated: false },
     error: { message: null },
-};
+    polls: [],
+    currentPoll: {
 
+    },
+};
 
 export const store = createStore(
     rootReducer,
