@@ -1,5 +1,17 @@
 const db = require('../models')
 
+decodeIdHandle = (decode) => {
+    // console.log(decode)
+    if (decode._id) {
+        return decode._id
+    }
+    else {
+        if (decode.id) {
+            return decode.id
+        }
+    }
+}
+
 exports.showPolls = async (req, res, next) => {
     try {
         const polls = await db.Poll.find().populate('user', ['username', 'id']);
@@ -14,8 +26,9 @@ exports.showPolls = async (req, res, next) => {
 
 exports.createPoll = async (req, res, next) => {
     try {
-        //console.log("DECODED", req.decoded)
-        const { id } = req.decoded
+        // console.log("DECODED createPoll", req.decoded, req.decoded.id)
+        // const { id } = req.decoded
+        const id = decodeIdHandle(req.decoded)
         const user = await db.User.findById(id)
 
         const { question, options } = req.body
@@ -39,10 +52,21 @@ exports.createPoll = async (req, res, next) => {
 
 exports.userPolls = async (req, res, next) => {
     try {
-        const { id } = req.decoded;
+
+        // console.log(req)
+        // console.log("DECODED userPolls", req.decoded, req.decoded.id)
+        // const { id } = req.decoded;
+        const id = decodeIdHandle(req.decoded)
         const user = await db.User.findById(id).populate('polls')
-        console.log(user)
-        res.status(200).json(user.polls)
+        if (user.polls) {
+
+            res.status(200).json(user.polls)
+        }
+        else {
+            throw new Error("You donot have any polls created")
+        }
+
+
     } catch (error) {
         error.status = 400;
         next(error)
@@ -66,15 +90,16 @@ exports.getPoll = async (req, res, next) => {
 exports.deletePoll = async (req, res, next) => {
     try {
         const { id: pollId } = req.params;
-
-        const { id: userId } = req.decoded
+        // console.log("DECODED deletePoll", req.decoded, req.decoded.id)
+        // const { id: userId } = req.decoded
+        const id = decodeIdHandle(req.decoded)
 
         const poll = await db.Poll.findById(pollId)
 
         if (!poll) throw new Error("Poll Not Found")
 
         //poll.user in objectId mongodb type
-        if (poll.user.toString() !== userId) {
+        if (poll.user.toString() !== id) {
             throw new Error("Unauthorized access")
         }
 
@@ -89,11 +114,10 @@ exports.deletePoll = async (req, res, next) => {
 exports.vote = async (req, res, next) => {
     try {
         const { id: pollId } = req.params;
-
-        const { id: userId } = req.decoded
-
+        // console.log("DECODED vote", req.decoded, req.decoded.id)
+        // const { id: userId } = req.decoded
+        const id = decodeIdHandle(req.decoded)
         const { answer } = req.body;
-        console.log("ANSWER RECEVED", answer)
         if (answer) {
 
             const poll = await db.Poll.findById(pollId)
@@ -101,7 +125,7 @@ exports.vote = async (req, res, next) => {
 
             //voting
             const vote = poll.options.map(option => {
-                console.log("here:", option.option)
+
                 if (option.option === answer) {
                     return {
                         option: option.option,
@@ -112,14 +136,14 @@ exports.vote = async (req, res, next) => {
 
                 }
                 else {
-                    console.log("In else")
+
                     return option
                 }
             })
 
             //check user vote and mark
-            if (poll.voted.filter(user => user.toString() === userId) <= 0) {
-                poll.voted.push(userId);
+            if (poll.voted.filter(user => user.toString() === id) <= 0) {
+                poll.voted.push(id);
                 poll.options = vote;
                 await poll.save();
                 res.status(202).json(poll)

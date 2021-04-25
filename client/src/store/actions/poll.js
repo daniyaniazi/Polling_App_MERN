@@ -18,12 +18,11 @@ export const setCurrentPoll = poll => ({
 export const getPolls = () => {
     return async dispatch => {
         try {
+            api.setToken(localStorage.jwtToken);
             const polls = await api.call('get', `polls`)
-            console.log("polls getpolls : ", polls)
             dispatch(setPolls(polls))
             dispatch(removeError())
         } catch (error) {
-            console.log("Poll Error", error)
             const err = error
             dispatch(addError(err))
         }
@@ -33,13 +32,15 @@ export const getPolls = () => {
 export const getUserPolls = () => {
     return async dispatch => {
         try {
+
+            api.setToken(localStorage.jwtToken);
             const polls = await api.call('get', `polls/user`)
             dispatch(setPolls(polls))
             dispatch(removeError())
         } catch (error) {
-            console.log("user Poll Error", error)
-            const err = error
-            dispatch(addError(err))
+            console.log("ERROR: ", error.response.data)
+            const err = error.response.data
+            dispatch(addError(err.message))
         }
     }
 }
@@ -52,7 +53,6 @@ export const createPoll = (data) => {
             dispatch(setCurrentPoll(poll))
             dispatch(removeError())
         } catch (error) {
-            console.log("craetePolls", error.response.data)
             const err = error.response.data
             dispatch(addError(err.message))
         }
@@ -67,7 +67,6 @@ export const getCurrentPoll = (path) => {
             dispatch(setCurrentPoll(poll))
             dispatch(removeError())
         } catch (error) {
-            console.log("getCurrentPoll", error)
             const err = error
             dispatch(addError(err))
         }
@@ -79,13 +78,9 @@ export const vote = (path, data) => {
         try {
             console.log(path, data)
             const poll = await api.call('post', `polls/${path}`, data)
-            console.log(
-                "VOTE RESPONSE : ", poll
-            )
             dispatch(setCurrentPoll(poll))
             dispatch(removeError())
         } catch (error) {
-            console.log("vote", error.response.data)
             const err = error.response.data
             dispatch(addError(err.message))
         }
@@ -95,15 +90,10 @@ export const vote = (path, data) => {
 export const deletePoll = (path) => {
     return async dispatch => {
         try {
-            console.log(path)
             const poll = await api.call('delete', `polls/${path}`)
-            console.log(
-                "DELETE RESPONSE : ", poll
-            )
             dispatch(setCurrentPoll({}))
             dispatch(removeError())
         } catch (error) {
-            console.log("vote", error.response.data)
             const err = error.response.data
             dispatch(addError(err.message))
         }

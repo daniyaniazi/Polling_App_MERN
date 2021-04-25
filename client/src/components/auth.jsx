@@ -16,13 +16,13 @@ class Auth extends React.Component {
     handleChange = (e) => {
         this.setState({ ...this.state, [e.target.name]: e.target.value })
     }
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         const { username, password } = this.state
         e.preventDefault();
-        console.log(username, password)
         const { authType } = this.props
 
-        this.props.authUser(authType || 'login', { username, password })
+        await this.props.authUser(authType || 'login', { username, password })
+        return (window.location = '/')
     }
     render() {
 

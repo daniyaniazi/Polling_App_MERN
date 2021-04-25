@@ -26,7 +26,6 @@ class Polls extends Component {
                 {poll.question}
             </li>
         ));
-
         return (
             <Fragment>
                 {auth.isAuthenticated && (
@@ -40,7 +39,8 @@ class Polls extends Component {
                     </div>
                 )}
                 <h2>Polls</h2>
-                <ul className="polls">{polls}</ul>
+
+                <ul className="polls">{polls.length > 0 ? polls : "No Polls Created"}</ul>
             </Fragment>
         );
     }

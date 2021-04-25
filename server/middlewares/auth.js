@@ -2,7 +2,9 @@ const jwt = require('jsonwebtoken')
 
 module.exports = (req, res, next) => {
     try {
+        // console.log("Headers :", req.headers['authorization'])
         if (req.headers['authorization']) {
+
             const token = req.headers.authorization.split(' ')[1]
 
             jwt.verify(token, process.env.SECRET, (err, decoded) => {
@@ -11,6 +13,7 @@ module.exports = (req, res, next) => {
                     next("Authentication Failed");
                 }
                 else {
+
                     req.decoded = decoded
                     next()
                 }
@@ -22,7 +25,7 @@ module.exports = (req, res, next) => {
     }
     catch (error) {
         error.message = "No Token Provided Please Login";
-        console.log("error msg", error.message)
+
         return next(error)
     }
 }

@@ -11,7 +11,6 @@ exports.register = async (req, res, next) => {
         const token = jwt.sign({ _id, username }, process.env.SECRET)
         res.status(201).json({ _id, username, createdAt, token })
     } catch (error) {
-        console.log(error)
         if (error.code = 11000) {
             error.message = "Sorry that username is already taken"
         }
@@ -26,7 +25,6 @@ exports.login = async (req, res, next) => {
         if (user) {
 
             const { id, username } = user;
-
             const valid = await user.comparePassword(req.body.password)
 
 
@@ -44,7 +42,6 @@ exports.login = async (req, res, next) => {
         }
     } catch (error) {
         error.message = "Invalid username/password";
-        console.log("error msg", error.message)
         return next(error)
     }
 }

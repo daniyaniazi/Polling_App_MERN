@@ -34,10 +34,39 @@ const Poll = ({ poll, vote, auth, deletePoll }) => {
             },
         ],
     };
+
+    const handleAuthor = () => {
+        if (poll.user._id) {
+            if (poll.user._id === auth.user.id) {
+                console.log("case 1 of 1")
+                return true
+            }
+            if (poll.user._id === auth.user._id) {
+                console.log("case 1 of 2")
+                return true
+            }
+        }
+        else {
+            if (poll.user) {
+                if (poll.user === auth.user._id) {
+                    console.log("case 2 of 1")
+                    return true
+                }
+                if (poll.user === auth.user.id) {
+                    console.log("case 2 of 2")
+                    return true
+                }
+            }
+            else {
+                console.log("No true")
+            }
+        }
+    }
+
     return (
 
         <div className="votePoll">
-            {auth.isAuthenticated && poll.options && poll.user._id === auth.user.id && (<button className='Delbutton' onClick={async () => {
+            {auth.isAuthenticated && poll.options && handleAuthor() && (<button className='Delbutton' onClick={async () => {
                 await deletePoll(poll._id)
                 return (window.location = '/')
             }}>Delete Poll</button>)}

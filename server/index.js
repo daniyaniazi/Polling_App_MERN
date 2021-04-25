@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false })); // recognize the incoming Requ
 
 app.use((req, res, next) => {
     console.log(`REQUEST URL : ${req.url}`)
-    console.log(`REQUEST MWTHOD : ${req.method}`)
+    console.log(`REQUEST METHOD : ${req.method}`)
     console.log(`BODY: ${req.body}`)
     next()
 })

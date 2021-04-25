@@ -3,7 +3,6 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import AuthPage from '../pages/AuthPage';
 import { connect } from "react-redux";
 import store from "../store";
-import PollPage from '../pages/PollPage';
 import HomePage from '../pages/HomePage';
 import { getCurrentPoll } from '../store/actions';
 import PollDisplayPage from '../pages/PollDisplayPage';

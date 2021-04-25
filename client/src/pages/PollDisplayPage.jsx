@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import Poll from '../components/Poll';
 import ErrorMessage from '../components/errorMessage';
-// { match, getPoll, poll }
-
-
 
 class PollPage extends Component {
     async componentDidMount() {
