@@ -62,7 +62,7 @@ class CreatePoll extends Component {
 
         return (
             <Fragment>
-                {this.state.added && <div className="success">
+                {this.state.added && <div className={this.state.added ? "success" : "noError"}>
                     <h2 className="success"> Your Question Has been Posted</h2></div>}
 
                 <div className="Form">

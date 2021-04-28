@@ -6,6 +6,7 @@ import { authUser, logout } from '../store/actions'
 class Auth extends React.Component {
     constructor(props) {
         super(props)
+        console.log(this.props)
         this.state = {
             username: '',
             password: '',
@@ -21,8 +22,8 @@ class Auth extends React.Component {
         e.preventDefault();
         const { authType } = this.props
 
-        await this.props.authUser(authType || 'login', { username, password })
-        return (window.location = '/')
+        const response = await this.props.authUser(authType || 'login', { username, password })
+        // return (window.location = '/')
     }
     render() {
 
@@ -31,7 +32,8 @@ class Auth extends React.Component {
 
             <div className="Form">
 
-                <h2>Login / SignUp</h2>
+                <h2>{this.props.authType === 'register' ? "Sign Up" :
+                    "Sign In"}</h2>
                 <form onSubmit={this.handleSubmit}>
                     <div className="option">
                         <label htmlFor="username">Username</label>
@@ -42,7 +44,7 @@ class Auth extends React.Component {
                         <label htmlFor="password">Password</label>
                         <input type="password" autoComplete="off" value={password} name="password" onChange={this.handleChange} />
                     </div>
-                    <button className="button" type='submit'>Submit</button>
+                    <button className="button" type='submit'>{this.props.authType}</button>
                 </form>
             </div>
         </div>

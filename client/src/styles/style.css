@@ -21,7 +21,7 @@ body {
 
 .logo {
     font-weight: bolder;
-    color: #c94c4c;
+    color: #fbffe8;
     font-size: 25px;
 }
 
@@ -63,18 +63,34 @@ label {
 }
 
 .ErrorMessage {
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
     font-weight: bold;
     font-size: 20px;
-    color: #c94c4c;
+    color: #ffffff;
     padding: 10px;
     text-align: center;
+    background-color: #b11717;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.noError {
+    background-color: transparent;
 }
 
 .success {
+    padding: 5px;
+    border-radius: 5px;
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
     font-weight: bold;
     font-size: 20px;
-    color: #418f20;
+    background-color: #69af4c;
     text-align: center;
+    color: #ffffff;
 }
 
 .buttons_center {
@@ -100,14 +116,14 @@ label {
 }
 
 .logout {
-    background-color: #c94c4c;
+    background-color: #ffffff;
     border-radius: 5px;
     outline: none;
     border: none;
 }
 
 .Delbutton {
-    background-color: #c94c4c;
+    background-color: #b11717;
     padding: 10px 20px;
     font-weight: bold;
     font-size: 20px;
@@ -115,6 +131,7 @@ label {
     border: none;
     border-radius: 5px;
     margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .Delbutton:hover,
